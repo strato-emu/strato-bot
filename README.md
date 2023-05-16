@@ -41,6 +41,10 @@ To start the bot, run `npm run tscw`. This is a script that will allow users to 
 
 Anytime a command's `data` property is modified or a new command is created, use `npm run update` to update the command list.
 
+## Docker Support
+
+Docker packages can be created and run using Github workflows. Run the Docker images by downloading the package, cloning the .env file in the source code, and doing `docker run --env-file <.env file name> <Docker image name>`.
+
 ## Notes
 
 - Strato Bot is written in TypeScript to allow for compile-time error checking. Strato Bot is also written completely using the ECMAScript standard for added concision and convenience.
