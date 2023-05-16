@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config;
+dotenv.config();
 import { Client, Collection, GatewayIntentBits, REST, Routes } from "discord.js";
 import { AccessLevel } from "./commonFunctions.js";
 import fs from "node:fs";
@@ -10,7 +10,7 @@ const commandFiles = fs.readdirSync("./build/commands").filter(file => file.ends
 
 // Get the output of each command's data for updating
 for (const file of commandFiles) {
-    const { command } = await import(`../commands/${file}`);
+    const { command } = await import(`../build/commands/${file}`);
     switch (command.level) {
         case AccessLevel.Admin:
             command.data.setDefaultMemberPermissions(8); //Administrator
@@ -68,8 +68,12 @@ const client = new Client({
     ],
 });
 
+// Read command files
+client.commands = new Collection();
+const commandFiles2 = fs.readdirSync("./build/commands").filter(file => file.endsWith(".js"));
+
 // Retrieving all the command files
-for (const file of commandFiles) {
+for (const file of commandFiles2) {
     const { command } = await import(`./commands/${file}`);
 
     client.commands.set(command.data.name, command);
@@ -88,4 +92,4 @@ for (const file of eventFiles) {
 }
 
 // Login to Discord
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN!);
