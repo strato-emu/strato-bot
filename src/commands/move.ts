@@ -1,5 +1,3 @@
-//@ts-ignore
-import config from "../config.json" assert { type : "json" };
 import { ActionRowBuilder, AttachmentBuilder, ButtonBuilder, ButtonStyle, ChannelType, ChatInputCommandInteraction, ComponentType, EmbedBuilder, Message, SlashCommandBuilder, TextChannel } from "discord.js";
 import { AccessLevel, isSnowflake, serializeMessage } from "../common/commonFunctions.js";
 import { IncomingMessage } from "http";
@@ -120,7 +118,7 @@ export const command = {
         let response = await interaction.editReply({ embeds: [new EmbedBuilder({title: `Moving ${messages.length} messages to ${channel!.name}, confirm`, fields: [{ name: "Earliest message:", value: serializeMessage(messages[0]).substring(0, 1021).concat("...") }, {name: "Latest message:", value: serializeMessage(messages[messages.length - 1]).substring(0, 1021).concat("...")}] })], components: [button]});
         let webhook = (await (channel as TextChannel).fetchWebhooks()).find((value) => value.name == "SkylineMove") ?? await (channel as TextChannel).createWebhook({ name: "SkylineMove"});
 		
-        response.awaitMessageComponent({ time: config.deleteTime, componentType: ComponentType.Button })
+        response.awaitMessageComponent({ time: Number(process.env.DELETE_TIME), componentType: ComponentType.Button })
             .then(async recievedButton => {
                 if (recievedButton.customId == "yes") {
                     button.setComponents(
@@ -184,7 +182,7 @@ export const command = {
                     recievedButton.update({ embeds: [new EmbedBuilder({ title: "Move canceled" }).setColor("Red")], components: [button]});
                 }
             }, async () => {
-                interaction.editReply({embeds: [new EmbedBuilder({ title: `No confirmation within ${config.deleteTime/1000} seconds` }).setColor("Red")], components: []});
+                interaction.editReply({embeds: [new EmbedBuilder({ title: `No confirmation within ${Number(process.env.DELETE_TIME)/1000} seconds` }).setColor("Red")], components: []});
             })
             .catch(console.error);		
     }

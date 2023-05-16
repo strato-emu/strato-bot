@@ -1,5 +1,5 @@
-//@ts-ignore
-import config from "../config.json" assert { type: "json" };
+import dotenv from "dotenv";
+dotenv.config;
 import { REST, Routes } from "discord.js";
 import { AccessLevel } from "./commonFunctions.js";
 import fs from "node:fs";
@@ -33,7 +33,7 @@ for (const file of commandFiles) {
     commands.push(command.data.toJSON());
 }
 
-const rest = new REST({ version: "10" }).setToken(config.token);
+const rest = new REST({ version: "10" }).setToken(process.env.TOKEN!);
 
 // Fully update all commands
 (async () => {
@@ -41,7 +41,7 @@ const rest = new REST({ version: "10" }).setToken(config.token);
         console.log(`Started updating ${commands.length} slash commands`);
 
         const data : any = await rest.put(
-            Routes.applicationGuildCommands(config.clientId, config.guildId),
+            Routes.applicationGuildCommands(process.env.CLIENT_ID!, process.env.GUILD_ID!),
             { body: commands }, // To delete registered commands: { body : [] }
         );
 

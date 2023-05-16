@@ -1,5 +1,3 @@
-//@ts-ignore
-import config from "../config.json" assert { type: "json" };
 import { ActionRowBuilder, APISelectMenuOption, ChatInputCommandInteraction, ComponentType, EmbedBuilder, SlashCommandBuilder, StringSelectMenuBuilder } from "discord.js";
 import { AccessLevel } from "../common/commonFunctions.js";
 import { Octokit } from "@octokit/rest";
@@ -122,7 +120,7 @@ export const command = {
                     ], components: []
                 });
 
-                setTimeout(() => interaction.deleteReply(), config.deleteTime);
+                setTimeout(() => interaction.deleteReply(), Number(process.env.DELETE_TIME));
             }
         });
 

@@ -1,5 +1,3 @@
-//@ts-ignore
-import config from "../config.json" assert { type: "json" };
 import { ChatInputCommandInteraction, SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, ModalActionRowComponentBuilder, ChannelType, Message } from "discord.js";
 import { AccessLevel, isSnowflake } from "../common/commonFunctions.js";
 
@@ -68,7 +66,7 @@ export const command = {
         interaction.awaitModalSubmit({ time: 300000 })
             .then(modals => {
                 message.edit(modals.fields.getTextInputValue("newText"));
-                modals.reply({ content: `[Message](https://discord.com/channels/${config.guildId}/${channel.id}/${messageId}) edited.`, ephemeral: true });
+                modals.reply({ content: `[Message](https://discord.com/channels/${process.env.GUILD_ID!}/${channel.id}/${messageId}) edited.`, ephemeral: true });
             }, async () => {
                 interaction.followUp({ content: "Took longer than 5 minutes to recieve a response, please try again", ephemeral: true });
             })

@@ -1,5 +1,3 @@
-//@ts-ignore
-import config from "../config.json" assert { type: "json" };
 import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import { AccessLevel, userHasAccess } from "../common/commonFunctions.js";
 import fs from "node:fs";
@@ -20,7 +18,7 @@ export const command = {
                 embed.addFields({ name: command.data.name, value: command.data.description, inline: false});
             }
         }
-        if (config.dmResponses) {
+        if (process.env.DM_RESPONSES == "true") {
             await interaction.reply({ content: "Check DMs", ephemeral: true });
             interaction.user.send({ embeds: [embed] });
             await interaction.deleteReply();

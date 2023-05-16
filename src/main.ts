@@ -1,5 +1,5 @@
-//@ts-ignore
-import config from "./config.json" assert { type: "json" };
+import dotenv from "dotenv";
+dotenv.config;
 import { Client, Collection, GatewayIntentBits } from "discord.js";
 import fs from "node:fs";
 
@@ -44,4 +44,4 @@ for (const file of eventFiles) {
 }
 
 // Login to Discord
-client.login(config.token);
+client.login(process.env.TOKEN);

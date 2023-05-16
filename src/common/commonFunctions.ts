@@ -1,5 +1,3 @@
-//@ts-ignore
-import config from "../config.json" assert { type: "json" };
 import { Snowflake, User, Guild, Message } from "discord.js";
 
 /** This enumerates all of the access levels a user can have */
@@ -26,13 +24,13 @@ export function getAccessLevelRole(level: AccessLevel): Snowflake {
     let role = "";
     switch (level) {
         case AccessLevel.Admin:
-            role = config.adminRole;
+            role = process.env.ADMIN_ROLE!;
             break;
         case AccessLevel.Moderator:
-            role = config.moderatorRole;
+            role = process.env.MODERATOR_ROLE!;
             break;
         case AccessLevel.Helper:
-            role = config.helperRole;
+            role = process.env.HELPER_ROLE!;
             break;
     }
     return role;
