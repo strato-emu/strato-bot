@@ -11,7 +11,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build the strato-bot Docker image
+      - name: Build and push the strato-bot Docker image
         run: |
           docker build . -t ghcr.io/finr0y/strato-bot:latest
           docker push ghcr.io/finr0y/strato-bot:latest
