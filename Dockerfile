@@ -8,6 +8,6 @@ RUN npm install
 
 COPY . .
 
-RUN npm run update
+RUN npm run build
 
 CMD ["node", "build/main.js"]
