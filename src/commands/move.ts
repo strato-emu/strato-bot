@@ -1,5 +1,5 @@
 import { ActionRowBuilder, AttachmentBuilder, ButtonBuilder, ButtonStyle, ChannelType, ChatInputCommandInteraction, ComponentType, EmbedBuilder, Message, SlashCommandBuilder, TextChannel } from "discord.js";
-import { AccessLevel, isSnowflake, serializeMessage } from "../common/commonFunctions.js";
+import { AccessLevel, isSnowflake, serializeMessage } from "../commonFunctions.js";
 import { IncomingMessage } from "http";
 import https from "https";
 

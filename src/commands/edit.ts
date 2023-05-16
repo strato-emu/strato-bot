@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, ModalActionRowComponentBuilder, ChannelType, Message } from "discord.js";
-import { AccessLevel, isSnowflake } from "../common/commonFunctions.js";
+import { AccessLevel, isSnowflake } from "../commonFunctions.js";
 
 export const command = {
     data: new SlashCommandBuilder()

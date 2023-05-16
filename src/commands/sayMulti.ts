@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder, ChannelType, TextChannel, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, ModalActionRowComponentBuilder } from "discord.js";
-import { AccessLevel } from "../common/commonFunctions.js";
+import { AccessLevel } from "../commonFunctions.js";
 
 export const command = {
     data: new SlashCommandBuilder()

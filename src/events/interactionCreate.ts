@@ -1,5 +1,5 @@
 import { Events, GuildTextBasedChannel, Interaction } from "discord.js";
-import { isNormalUser } from "../common/commonFunctions.js";
+import { isNormalUser } from "../commonFunctions.js";
 
 export const event = {
     name: Events.InteractionCreate,

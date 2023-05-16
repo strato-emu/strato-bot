@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } from "discord.js";
-import { AccessLevel, userHasAccess } from "../common/commonFunctions.js";
+import { AccessLevel, userHasAccess } from "../commonFunctions.js";
 import fs from "node:fs";
 
 export const command = {

@@ -1,5 +1,5 @@
 import { ActionRowBuilder, APISelectMenuOption, ChatInputCommandInteraction, ComponentType, EmbedBuilder, SlashCommandBuilder, StringSelectMenuBuilder } from "discord.js";
-import { AccessLevel } from "../common/commonFunctions.js";
+import { AccessLevel } from "../commonFunctions.js";
 import { Octokit } from "@octokit/rest";
 
 export const command = {
