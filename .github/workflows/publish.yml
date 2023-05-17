@@ -13,5 +13,5 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push the strato-bot Docker image
         run: |
-          docker build . -t ghcr.io/finr0y/strato-bot:latest
-          docker push ghcr.io/finr0y/strato-bot:latest
+          docker build . -t ghcr.io/strato-emu/strato-bot:latest
+          docker push ghcr.io/strato-emu/strato-bot:latest
