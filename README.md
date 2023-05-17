@@ -35,11 +35,7 @@ Download the code and extract it to a folder. Run `npm i` from inside the projec
 
 ### Step 3: Starting the bot
 
-To start the bot, run `npm run tscw`. This is a script that will allow users to make changes to the code that will be detected and recompiled as they are made.
-
-### Step 4: Deploy commands
-
-Anytime a command's `data` property is modified or a new command is created, use `npm run update` to update the command list.
+To start the bot in development mode, run `npm run tscw`. This is a script that will allow users to make changes to the code that will be detected and recompiled as they are made. Otherwise, run `npm run start`. Bot commands are updated on start for both scripts.
 
 ## Docker Support
 
