@@ -4,7 +4,7 @@ import { Octokit } from "@octokit/rest";
 
 export const command = {
     data: new SlashCommandBuilder()
-        .setName("skyline-release")
+        .setName("release")
         .setDescription("The latest release from the specified branch")
         .addStringOption(option =>
             option
@@ -16,8 +16,8 @@ export const command = {
 
         const branch = interaction.options.getString("branch") ?? "master";
         const runs = (await octokit.actions.listWorkflowRunsForRepo({
-            owner: "skyline-emu",
-            repo: "skyline",
+            owner: "strato-emu",
+            repo: "strato",
             branch: branch,
             status: "completed",
         })).data;
@@ -31,8 +31,8 @@ export const command = {
         for (let run of runs.workflow_runs) {
             if (run.name == "CI") {
                 const artifacts = (await octokit.rest.actions.listWorkflowRunArtifacts({
-                    owner: "skyline-emu",
-                    repo: "skyline",
+                    owner: "strato-emu",
+                    repo: "strato",
                     run_id: run.id,
                 })).data.artifacts;
 
@@ -79,11 +79,11 @@ export const command = {
             "fields": [
                 {
                     "name": "Release Build (Recommended)",
-                    "value": `[Download APK](https://github.com/skyline-emu/skyline/suites/${selectedRun.check_suite_id}/artifacts/${releaseArtifact.id}) — Heavily optimized with limited validation`
+                    "value": `[Download APK](https://github.com/strato-emu/strato/suites/${selectedRun.check_suite_id}/artifacts/${releaseArtifact.id}) — Heavily optimized with limited validation`
                 },
                 {
                     "name": "Debug Build",
-                    "value": `[Download APK](https://github.com/skyline-emu/skyline/suites/${selectedRun.check_suite_id}/artifacts/${debugArtifact.id}) — Extra validation and no optimizations for debugging`
+                    "value": `[Download APK](https://github.com/strato-emu/strato/suites/${selectedRun.check_suite_id}/artifacts/${debugArtifact.id}) — Extra validation and no optimizations for debugging`
                 }
             ]
         });
