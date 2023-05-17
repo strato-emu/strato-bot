@@ -116,7 +116,7 @@ export const command = {
                     .setStyle(ButtonStyle.Secondary));
 		
         let response = await interaction.editReply({ embeds: [new EmbedBuilder({title: `Moving ${messages.length} messages to ${channel!.name}, confirm`, fields: [{ name: "Earliest message:", value: serializeMessage(messages[0]).substring(0, 1021).concat("...") }, {name: "Latest message:", value: serializeMessage(messages[messages.length - 1]).substring(0, 1021).concat("...")}] })], components: [button]});
-        let webhook = (await (channel as TextChannel).fetchWebhooks()).find((value) => value.name == "SkylineMove") ?? await (channel as TextChannel).createWebhook({ name: "SkylineMove"});
+        let webhook = (await (channel as TextChannel).fetchWebhooks()).find((value) => value.name == "StratoMove") ?? await (channel as TextChannel).createWebhook({ name: "StratoMove"});
 		
         response.awaitMessageComponent({ time: Number(process.env.DELETE_TIME), componentType: ComponentType.Button })
             .then(async recievedButton => {

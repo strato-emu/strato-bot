@@ -8,7 +8,7 @@ export const command = {
         .setDescription("Recieve this help embed in DMs"),
     level: AccessLevel.User,
     async execute(interaction: ChatInputCommandInteraction) {
-        let embed = new EmbedBuilder({ title: "**Skyline Bot Commands**" }).setColor("Green");
+        let embed = new EmbedBuilder({ title: "**Strato Bot Commands**" }).setColor("Green");
 
         const commandFiles = fs.readdirSync("./build/commands").filter(file => file.endsWith(".js"));
 

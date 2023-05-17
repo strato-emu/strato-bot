@@ -30,7 +30,7 @@ export const command = {
 		
         let embed = new EmbedBuilder()
             .setColor("Blue")
-            .setTitle("**Skyline Game Compatibility Check**")
+            .setTitle("**Strato Game Compatibility Check**")
             .setDescription(`<@${interaction.user.id}> Select your desired game from the list`);
 		
         let rowOptions: APISelectMenuOption[] = [];
@@ -102,7 +102,7 @@ export const command = {
                         { name: "Game Behavior", value: body[0].replace("Game Behaviour", "").replace(/!/gm, "").replace("- ", "").substring(0, 1021).concat("...") },
                         { name: "Logs", value: logs }
                     )
-                    .setFooter({ text: `Issue #${issue.number}`, iconURL: "https://avatars.githubusercontent.com/u/52578041" });
+                    .setFooter({ text: `Issue #${issue.number}`, iconURL: "https://raw.githubusercontent.com/strato-emu/branding/master/logo/strato-logo.png" });
 
                 interaction.editReply({
                     embeds: [mainEmbed], components: []

@@ -1,7 +1,7 @@
 {
-  "name": "skyline-bot",
+  "name": "strato-bot",
   "version": "1.0.0",
-  "description": "This is the bot for the official Skyline Emulator Discord Server",
+  "description": "This is the bot for the official Strato Emulator Discord Server",
   "type": "module",
   "main": "main.js",
   "scripts": {
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skyline-emu/skyline-bot.git"
+    "url": "git+https://github.com/strato-emu/strato-bot.git"
   },
-  "author": "https://github.com/skyline-emu/skyline-bot/contributors",
+  "author": "https://github.com/strato-emu/strato-bot/contributors",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/skyline-emu/skyline-bot/issues"
+    "url": "https://github.com/strato-emu/strato-bot/issues"
   },
-  "homepage": "https://github.com/skyline-emu/skyline-bot#readme",
+  "homepage": "https://github.com/strato-emu/strato-bot#readme",
   "dependencies": {
     "@octokit/rest": "^19.0.5",
     "@types/node-fetch": "^2.6.2",
