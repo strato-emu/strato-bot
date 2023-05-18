@@ -13,7 +13,7 @@ export const event = {
                     await response.delete();
                     await message.delete();
                 } catch (err) {
-                    console.error(err);
+                    console.log("User message in attachment-only channel has already been deleted");
                 }
             }, longDeleteTime);
         }
