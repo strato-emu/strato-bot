@@ -33,13 +33,13 @@ export const command = {
 
             case 3:
                 embed.setTitle("Rule #3 - Spamming");
-                embed.setDescription(`Spamming is not allowed. If you do have rather lengthy messages you want to send, and you feel like it might be considered spam, please do so in <#620658560661192714>.
+                embed.setDescription(`Spamming is not allowed. If you do have rather lengthy messages you want to send, and you feel like it might be considered spam, please do so in <#1109121227286659133>.
                 * In addition, using a service such as [Pastebin](https://pastebin.com/) or [Hatebin](https://hatebin.com/) is recommended for code-snippets and such.`);
                 break;
 
             case 4:
                 embed.setTitle("Rule #4 - Offtopic");
-                embed.setDescription("Please keep offtopic conversations in <#620658427257028618>.");
+                embed.setDescription("Please keep offtopic conversations in <#1104386571664371842>.");
                 break;
 
             default:
