@@ -30,7 +30,7 @@ export const command = {
                 timestamp: Date.parse(release.data.created_at),
                 "author": {
                     // We use this as a psuedo-heading rather than as an actual authorship field
-                    "name": "Latest Strato release build",
+                    "name": "Latest Strato Release Build",
                     "icon_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
                 },
                 "fields": [{
