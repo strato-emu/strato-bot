@@ -1,6 +1,5 @@
 import { Events, GuildTextBasedChannel, Interaction } from "discord.js";
 import { isNormalUser, logToFile } from "../commonFunctions.js";
-import fs from "node:fs";
 
 export const event = {
     name: Events.InteractionCreate,
@@ -8,26 +7,13 @@ export const event = {
         if (!interaction.isChatInputCommand()) return;
         
         const timestamp = new Date(Date.now());
-        let hours = timestamp.getHours().toString();
-        if (hours.toString().length == 1) {
-            hours = `0${hours}`;
-        }
-        let minutes = timestamp.getMinutes().toString();
-        if (minutes.toString().length == 1) {
-            minutes = `0${minutes}`;
-        }
-        let seconds = timestamp.getSeconds().toString();
-        if (seconds.toString().length == 1) {
-            seconds = `0${seconds}`;
-        }
 
-        let commandLog =`[${hours}:${minutes}:${seconds}] ${interaction.user.tag} used the /${interaction.commandName} command in #${(interaction.channel as GuildTextBasedChannel).name}`;
+        let commandLog =`[${timestamp.toLocaleString()}] ${interaction.user.tag} used the /${interaction.commandName} command in #${(interaction.channel as GuildTextBasedChannel).name}`;
         console.log(commandLog), logToFile(commandLog);
 
         //Attachment-only channel filter (for commands)
-        if (JSON.parse(process.env.ATTACHMENT_ONLY_CHANNELS!).includes(interaction.channel!.id) && isNormalUser(interaction.user, interaction.guild!)) {
+        if (JSON.parse(process.env.ATTACHMENT_ONLY_CHANNELS!).includes(interaction.channel!.id) && isNormalUser(interaction.user, interaction.guild!))
             return interaction.reply({ content: "Commands cannot be used in this channel", ephemeral: true });
-        }
 
         //If it's a command, execute it
         const command = interaction.client.commands.get(interaction.commandName);
