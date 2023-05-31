@@ -44,4 +44,5 @@ Docker packages can be created and run using Github workflows. Run the Docker im
 ## Notes
 
 - Strato Bot is written in TypeScript to allow for compile-time error checking. Strato Bot is also written completely using the ECMAScript standard for added concision and convenience.
+- Strato Bot logs command usage to a file named console.log in the root directory by default, using the function logToFile.
 - To set command permissions beyond the defaults, you'll need to edit them in server settings.

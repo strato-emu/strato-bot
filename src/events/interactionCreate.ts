@@ -1,12 +1,28 @@
 import { Events, GuildTextBasedChannel, Interaction } from "discord.js";
-import { isNormalUser } from "../commonFunctions.js";
+import { isNormalUser, logToFile } from "../commonFunctions.js";
+import fs from "node:fs";
 
 export const event = {
     name: Events.InteractionCreate,
     async execute(interaction: Interaction) {
-        console.log(`${interaction.user.tag} triggered an interaction in #${(interaction.channel as GuildTextBasedChannel)!.name}`);
-
         if (!interaction.isChatInputCommand()) return;
+        
+        const timestamp = new Date(Date.now());
+        let hours = timestamp.getHours().toString();
+        if (hours.toString().length == 1) {
+            hours = `0${hours}`;
+        }
+        let minutes = timestamp.getMinutes().toString();
+        if (minutes.toString().length == 1) {
+            minutes = `0${minutes}`;
+        }
+        let seconds = timestamp.getSeconds().toString();
+        if (seconds.toString().length == 1) {
+            seconds = `0${seconds}`;
+        }
+
+        let commandLog =`[${hours}:${minutes}:${seconds}] ${interaction.user.tag} used the /${interaction.commandName} command in #${(interaction.channel as GuildTextBasedChannel).name}`;
+        console.log(commandLog), logToFile(commandLog);
 
         //Attachment-only channel filter (for commands)
         if (JSON.parse(process.env.ATTACHMENT_ONLY_CHANNELS!).includes(interaction.channel!.id) && isNormalUser(interaction.user, interaction.guild!)) {
@@ -15,7 +31,7 @@ export const event = {
 
         //If it's a command, execute it
         const command = interaction.client.commands.get(interaction.commandName);
-    
+        
         if (!command) {
             console.error(`No command matching ${interaction.commandName} was found`);
             return;

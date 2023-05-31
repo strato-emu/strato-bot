@@ -1,8 +1,9 @@
 import dotenv from "dotenv";
-dotenv.config();
 import { Client, Collection, GatewayIntentBits, REST, Routes } from "discord.js";
 import { AccessLevel } from "./commonFunctions.js";
 import fs from "node:fs";
+
+dotenv.config();
 
 // Get the command files from the commands directory
 const commands = [];
