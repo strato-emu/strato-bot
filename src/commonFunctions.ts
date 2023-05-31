@@ -1,4 +1,5 @@
 import { Snowflake, User, Guild, Message } from "discord.js";
+import fs from "node:fs";
 
 /** This enumerates all of the access levels a user can have */
 export enum AccessLevel {
@@ -10,7 +11,7 @@ export enum AccessLevel {
 
 /** 
  * @param string The string to test
- * @return If the tested string is a snowflake or not
+ * @returns If the tested string is a snowflake or not
  */
 export function isSnowflake(testString: string) {
     return (/^\d{17,19}$/.test(testString));
@@ -18,7 +19,7 @@ export function isSnowflake(testString: string) {
 
 /** 
  * @param level The AccessLevel to lookup the role of
- * @return The Snowflake that corresponds to the role of the supplied AccessLevel
+ * @returns The Snowflake that corresponds to the role of the supplied AccessLevel
  */
 export function getAccessLevelRole(level: AccessLevel): Snowflake {
     let role = "";
@@ -97,4 +98,14 @@ export function serializeMessage(message: Message) {
     }
 
     return contents;
+}
+
+/** 
+ * @param text The text to add to the console log
+ */
+export function logToFile(text: string) {
+    fs.appendFile("./console.log", `${text}\n`, (err) => {
+        if (err)
+            console.log(err);
+    });
 }
