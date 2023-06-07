@@ -104,7 +104,10 @@ export function serializeMessage(message: Message) {
  * @param text The text to add to the console log
  */
 export function logToFile(text: string) {
-    fs.appendFile("./console.log", `${text}\n`, (err) => {
+    const timestamp = new Date(Date.now());
+    let time = `[${timestamp.toLocaleString()}]`;
+    console.log(`${time} ${text}`);
+    fs.appendFile("./console.log", `${time} ${text}\n`, (err) => {
         if (err)
             console.log(err);
     });
