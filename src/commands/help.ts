@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } from "discord.js";
-import { AccessLevel, userHasAccess } from "../commonFunctions.js";
+import { AccessLevel, logToFile, userHasAccess } from "../commonFunctions.js";
 import fs from "node:fs";
 
 export const command = {
@@ -19,9 +19,14 @@ export const command = {
             }
         }
         if (process.env.DM_RESPONSES == "true") {
-            await interaction.reply({ content: "Check DMs", ephemeral: true });
-            interaction.user.send({ embeds: [embed] });
-            await interaction.deleteReply();
+            try {
+                await interaction.user.send({ embeds: [embed] });
+                await interaction.reply({ content: "Check DMs", ephemeral: true });
+                await interaction.deleteReply();
+            } catch (error) {
+                logToFile(`Cannot send messages to ${interaction.user.tag}; replying ephemerally`);
+                await interaction.reply({ embeds: [embed], ephemeral: true });
+            }
         } else {
             await interaction.reply({ embeds: [embed] });
         }
