@@ -5,11 +5,8 @@ export const event = {
     name: Events.InteractionCreate,
     async execute(interaction: Interaction) {
         if (!interaction.isChatInputCommand()) return;
-        
-        const timestamp = new Date(Date.now());
 
-        let commandLog =`[${timestamp.toLocaleString()}] ${interaction.user.tag} used the /${interaction.commandName} command in #${(interaction.channel as GuildTextBasedChannel).name}`;
-        console.log(commandLog), logToFile(commandLog);
+        logToFile(`${interaction.user.tag} used the /${interaction.commandName} command in #${(interaction.channel as GuildTextBasedChannel).name}`);
 
         //Attachment-only channel filter (for commands)
         if (JSON.parse(process.env.ATTACHMENT_ONLY_CHANNELS!).includes(interaction.channel!.id) && isNormalUser(interaction.user, interaction.guild!))
