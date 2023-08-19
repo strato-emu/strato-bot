@@ -5,7 +5,7 @@ import { Octokit } from "@octokit/rest";
 export const command = {
     data: new SlashCommandBuilder()
         .setName("game-status")
-        .setDescription("Checks the status of a game on the Skyline Games List")
+        .setDescription("Checks the status of a game on the Strato Games List")
         .addStringOption(option =>
             option
                 .setName("game-name")
@@ -15,12 +15,12 @@ export const command = {
     async execute(interaction: ChatInputCommandInteraction) {
         const octokit = new Octokit();
         const gameName = interaction.options.getString("game-name");
-        const queryString = gameName + "+repo:skyline-emu/skyline-games-list+type:issues+is:open";
+        const queryString = gameName + "+repo:strato-emu/compat-list+type:issues+is:open";
         let gitSearch = await octokit.request("GET /search/issues", { q:queryString });
         let results = gitSearch.data.items;
 
         if (results.length <= 0){
-            interaction.reply("No results found; check for spelling errors, or manually test and add issue [here](https://github.com/skyline-emu/skyline-games-list/issues)");
+            interaction.reply("No results found; check for spelling errors, or manually test and add issue [here](https://github.com/strato-emu/compat-list/issues)");
             return;
         }
 
