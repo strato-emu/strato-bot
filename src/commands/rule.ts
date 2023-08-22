@@ -49,7 +49,7 @@ export const command = {
             default:
                 return interaction.reply({ content: "The specified rule wasn't recognized", ephemeral: true });
         }
-        embed.setFooter("Multiple violations of the above rules may lead to temporary and eventually permanent mutes.");
+        embed.setFooter({ text: "Multiple violations of the above rules may lead to temporary and eventually permanent mutes."});
     	interaction.reply({embeds: [embed]});
     }
 };
