@@ -33,7 +33,7 @@ export const command = {
                 break;
 
             case 4:
-                embed.setTitle("4️⃣ Please keep offtopic conversations in ⁠<#1104386571664371842>.");
+                embed.setTitle("4️⃣ Please keep offtopic conversations in <#1104386571664371842>.");
                 break;
 
             case 5:
@@ -43,7 +43,7 @@ export const command = {
                 
             case 6:
                 embed.setTitle("6️⃣ Do not distribute or discuss custom builds");
-                embed.setDescription(`If you made changes to the emulator that you want to showcase, you can do so in ⁠<#1105607582560829511> or <#⁠1104386537975713832>, but clearly label the post as a custom build.`);
+                embed.setDescription(`If you made changes to the emulator that you want to showcase, you can do so in <#1105607582560829511> or <#1104386537975713832>, but clearly label the post as a custom build.`);
                 break;
                 
             default:
