@@ -1,4 +1,4 @@
-import { Snowflake, User, Guild, Message } from "discord.js";
+import { Snowflake, User, Guild, Message, EmbedBuilder } from "discord.js";
 import fs from "node:fs";
 
 /** This enumerates all of the access levels a user can have */
@@ -111,4 +111,26 @@ export function logToFile(text: string) {
         if (err)
             console.log(err);
     });
+}
+
+/** 
+ * @param selectedMessage The message to be deleted
+ * @param responseString The response message to be sent to the user
+ * @param responseEmbed The response embed to be sent to the user
+ */
+export async function selfDelete(selectedMessage: Message, responseString: string, responseEmbed?: EmbedBuilder) {
+    let responseMessage: Message;
+    if (responseEmbed) {
+        responseMessage = await selectedMessage.reply({content: responseString, embeds: [responseEmbed]});
+    } else {
+        responseMessage = await selectedMessage.reply({content: responseString});
+    }
+    return setTimeout(async () => {
+        try{
+            await responseMessage.delete();
+            await selectedMessage.delete();
+        } catch (err) {
+            logToFile(`${selectedMessage.author.tag} has already deleted their message`);
+        }
+    }, 3 * Number(process.env.DELETE_TIME));
 }
