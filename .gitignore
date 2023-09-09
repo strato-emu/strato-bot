@@ -115,3 +115,6 @@ build/
 .vs/
 bin/
 obj/
+
+# Temporary Files
+*.zip
