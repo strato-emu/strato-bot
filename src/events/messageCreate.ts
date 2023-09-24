@@ -10,8 +10,7 @@ export const event = {
         // Showcase and save-files channel filter (for messages)
         if (JSON.parse(process.env.SHOWCASE_CHANNELS!).includes(message.channel.id) && isNormalUser(message.author, message.guild!) && !message.author.bot && message.attachments.size == 0 && !message.content.includes("http://") && !message.content.includes("https://"))
             return selfDelete(message, `Chatting is not allowed in showcase channels, your message will be deleted in ${3 * Number(process.env.DELETE_TIME)/1000}s`);
-        // REVERT BELOW COMMENT ----------------------------------------------------------V
-        if (JSON.parse(process.env.SAVEFILES_CHANNELS!).includes(message.channel.id) /* && isNormalUser(message.author, message.guild!) */ && !message.author.bot) {
+        if (JSON.parse(process.env.SAVEFILES_CHANNELS!).includes(message.channel.id) && isNormalUser(message.author, message.guild!) && !message.author.bot) {
             let embed = new EmbedBuilder()
                 .setColor("Red")
                 .setTitle("Incorrect message format")
