@@ -1,5 +1,6 @@
 node_modules
 build
+temp
 tsconfig.tsbuildinfo
 console.log
 *.zip
