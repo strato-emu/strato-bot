@@ -17,7 +17,7 @@ export const event = {
                 .setDescription("All messages in <#1106383674225725440> must be following these rules:\n* There can only be one attachment on the message, a .zip file\n* The .zip file can only contain one folder named after the game's title ID\n* All save data must be contained within the folder in the root directory")
                 .setFooter({text: `Your message will be deleted in ${3 * Number(process.env.DELETE_TIME)/1000}s`}); 
             if (message.attachments.size == 1) {
-                let fileURL = message.attachments.first()!.url;
+                let fileURL = message.attachments.first()!.url.split("?")[0];
                 if (fileURL.indexOf("zip", fileURL.length - "zip".length) != -1) {
                     https.get(fileURL, (res) => { 
                         const filePath = fs.createWriteStream(`${process.cwd()}/savefile.zip`);
